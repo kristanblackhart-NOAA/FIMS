@@ -39,8 +39,8 @@
 void addData(Rcpp::DataFrame& data){
    std::cout<<"size = "<<data.size()<<"\n";
     Rcpp::DataFrame::iterator it;
-    for(it = data.begin(); it != data.end(); ++it){
-     std::cout<<(*it).name()<<"\n";
+    for(int i =0 ; i < data.size(); i++){
+     std::cout<<data[i]<<"\n";
     }
 
 }
