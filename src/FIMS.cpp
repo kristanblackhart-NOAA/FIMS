@@ -1,3 +1,5 @@
+
+#include "init.hpp"
 #include "../inst/include/interface/interface.hpp"
 #include "../inst/include/interface/rcpp_interface.hpp"
 
