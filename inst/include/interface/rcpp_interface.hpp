@@ -39,9 +39,9 @@
 void addData(Rcpp::DataFrame& data){
    std::cout<<"size = "<<data.size()<<"\n";
 Rcpp::DataFrame::iterator it;
-for(it = data.begin(); it != data.end(); ++it){
-    std::cout<<"name = "<<it->name()<<"\n";
-}
+
+    std::cout<<"name = "<<df.names()<<"\n";
+
 
 
 if (data.containsElementNamed("ages")){
