@@ -32,7 +32,7 @@
 #ifndef FIMS_RCPP_INTERFACE_HPP
 #define FIMS_RCPP_INTERFACE_HPP
 
-#define RCPP_NO_SUGAR
+//#define RCPP_NO_SUGAR
 #include <Rcpp.h>
 
 
