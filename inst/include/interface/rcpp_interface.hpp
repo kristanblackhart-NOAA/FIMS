@@ -43,7 +43,6 @@ if (data.containsElementNamed("ages")){
    for(int i = 0; i < ages.size(); i++){
       std::cout<<"ages["<<i<<"] = "<<ages[i]<<"\n";
    }
-   std::cout<<"time = "<<time.size()<<"\n";
 }
 
 
