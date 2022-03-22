@@ -2,7 +2,7 @@
 /*
  * File:   rcpp_interface.hpp
  *
- * Author: Kelli Johnson, Jim Ianeli, Tim Miller, Kathryn Doering, Matthew Supernaw
+ * Author: Kelli Johnson, Jim Ianelli, Tim Miller, Kathryn Doering, Matthew Supernaw
  * National Oceanic and Atmospheric Administration
  * National Marine Fisheries Service
  * Email: andrea.havron@noaa.gov
@@ -31,6 +31,10 @@
  */
 #ifndef FIMS_RCPP_INTERFACE_HPP
 #define FIMS_RCPP_INTERFACE_HPP
+
+#define RCPP_NO_SUGAR
+#include <Rcpp.h>
+
 
 
 
