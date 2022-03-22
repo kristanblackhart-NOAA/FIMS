@@ -36,6 +36,14 @@
 #include <Rcpp.h>
 
 
+void addData(Rcpp::DataFrame& data){
+   std::cout<<"size = "<<data.size()<<"\n";
+}
+
+RCPP_MODULE(fims) {
+    //place holder for module elements
+    Rcpp::function("addData", addData);
+};
 
 
 #endif
