@@ -38,6 +38,14 @@
 
 void addData(Rcpp::DataFrame& data){
    std::cout<<"size = "<<data.size()<<"\n";
+    Rcpp::DataFrame::iterator it;
+    for(it = data.begin(); it != data.end(); ++it){
+        Rcpp::StringVector col = *it;
+        std::string colName = col.attr("name");
+        Rcpp::Environment base = Rcpp::Environment::base_env();
+        Rcpp::Environment::namespace_env(base)["fims"]["data"][colName] = col;
+    }
+
 }
 
 RCPP_MODULE(fims) {
