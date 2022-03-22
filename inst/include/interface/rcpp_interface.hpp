@@ -40,7 +40,7 @@ void addData(Rcpp::DataFrame& data){
    std::cout<<"size = "<<data.size()<<"\n";
 Rcpp::DataFrame::iterator it;
 
-    std::cout<<"name = "<<df.names()<<"\n";
+    std::cout<<"name = "<<data.names()<<"\n";
 
 
 
