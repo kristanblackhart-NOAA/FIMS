@@ -1,4 +1,6 @@
 #include "../inst/include/interface/interface.hpp"
+#include "../inst/include/interface/rcpp_interface.hpp"
+
 
 /*
  * @brief TMB objective function
