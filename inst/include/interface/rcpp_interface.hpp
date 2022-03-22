@@ -46,9 +46,10 @@ Rcpp::DataFrame::iterator it;
 
 
 if (data.containsElementNamed("ages")){
-   Rcpp::NumericVector ages = data["ages"];
+   Rcpp::NumericVector ages = data["years"];
+   std::cout<<"years = "<<ages.size()<<"\n";
    for(int i = 0; i < ages.size(); i++){
-      std::cout<<"ages["<<i<<"] = "<<ages[i]<<"\n";
+      std::cout<<"years["<<i<<"] = "<<years[i]<<"\n";
    }
 }
 
