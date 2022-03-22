@@ -38,6 +38,12 @@
 
 void addData(Rcpp::DataFrame& data){
    std::cout<<"size = "<<data.size()<<"\n";
+Rcpp::DataFrame::iterator it;
+for(it = data.begin(); it != data.end(); ++it){
+    std::cout<<"name = "<<it->name()<<"\n";
+}
+
+
 if (data.containsElementNamed("ages")){
    Rcpp::NumericVector ages = data["ages"];
    for(int i = 0; i < ages.size(); i++){
