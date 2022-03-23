@@ -37,7 +37,17 @@
 
 
 
-
+namespace rcpp_utils{
+double max(Rcpp::NumericVector x){
+      double max = x[0];
+      for(int i = 1; i < x.size(); i++){
+         if(x[i] > max){
+               max = x[i];
+         }
+      }
+      return max;
+} 
+}
 void addData(Rcpp::DataFrame& data){
 std::cout<<"size = "<<data.size()<<"\n";
 Rcpp::DataFrame::iterator it;
@@ -49,7 +59,7 @@ Rcpp::DataFrame::iterator it;
 
 if (data.containsElementNamed("years")){
    Rcpp::NumericVector years = data["years"];
-  double max =  Rcpp::max(years);
+  double max =  rcpp_utils::max(years);
    std::cout<<"max years = "<<max<<"\n";
    std::cout<<"years = "<<years.size()<<"\n";
    for(int i = 0; i < years.size(); i++){

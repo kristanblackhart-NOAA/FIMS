@@ -7,7 +7,7 @@ library(TMB)
 fims <- Rcpp::Module(module = "fims", PACKAGE = "FIMS")
 
 input.data <- data.frame(
-  type = "index", # or something else? I vote for "trend" b/c then you can use environmental data
+  name = "trend", # or something else? I vote for "trend" b/c then you can use environmental data
   nages = c(25),
   ages = c(1:25), 
   nyears = c(5),
