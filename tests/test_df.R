@@ -26,7 +26,7 @@ input.data <- data.frame(
 input.data$name = factor(input.data$name, levels = c("trend","catch","age_comp","length_comp"))
 
 # fims$hello_fims()
-# print("hello")
+ print(input.data)
 fims$addData(input.data)
 
 
