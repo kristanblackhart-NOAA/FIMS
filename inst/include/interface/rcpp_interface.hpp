@@ -59,12 +59,14 @@ Rcpp::DataFrame::iterator it;
 
 if (data.containsElementNamed("years")){
    Rcpp::NumericVector years = data["years"];
-  double max =  rcpp_utils::max(years);
+   double max =  rcpp_utils::max(years);
    std::cout<<"max years = "<<max<<"\n";
-   std::cout<<"years = "<<years.size()<<"\n";
-   for(int i = 0; i < years.size(); i++){
-      std::cout<<"years["<<i<<"] = "<<years[i]<<"\n";
-   }
+}
+
+if (data.containsElementNamed("ages")){
+   Rcpp::NumericVector ages = data["ages"];
+   double max =  rcpp_utils::max(ages);
+   std::cout<<"max ages = "<<max<<"\n";
 }
 
 
