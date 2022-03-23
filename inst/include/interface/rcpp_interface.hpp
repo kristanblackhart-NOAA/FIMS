@@ -55,7 +55,12 @@ Rcpp::DataFrame::iterator it;
  // Rcpp::CharacterVector df_names = data.names();
 //   Rcpp::Rcout << "col names: " << df_names << std::endl;
 
-
+if (data.containsElementNamed("name")){
+   Rcpp::CharacterVector name = data["name"];
+   for(int i =0; i < name.size(); i++){
+      std::cout<<"name = "<<name[i]<<"\n";
+   }
+}
 
 if (data.containsElementNamed("years")){
    Rcpp::NumericVector years = data["years"];
