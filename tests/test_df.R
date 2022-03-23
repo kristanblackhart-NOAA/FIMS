@@ -7,17 +7,22 @@ library(TMB)
 fims <- Rcpp::Module(module = "fims", PACKAGE = "FIMS")
 
 input.data <- data.frame(
-  type = "index", # or something else?
-  ages = c (1:25), 
+  type = "index", # or something else? I vote for "trend" b/c then you can use environmental data
+  nages = c(25),
+  ages = c(1:25), 
+  nyears = c(5),
   years = c(2001, 2002, 2003, 2004, 2005),
   value = c(623.3, 515.2, 611.0, 729.0, 843.25,
           623.3, 515.2, NA, 729.0, 843.25,
           623.3, 515.2, 611.0, 729.0, 843.25,
           623.3, 515.2, 611.0, NA, 843.25,
           623.3, 515.2, 611.0, 729.0, 843.25), 
-  units = "numbers"
+  units = "numbers",
+  SE = NA,
+  Neff = NA
 )
-
-fims$addData(input.data)
+fims$hello_fims()
+print("hello")
+#fims$addData(input.data)
 
 

@@ -36,8 +36,10 @@
 #include <Rcpp.h>
 
 
+
+
 void addData(Rcpp::DataFrame& data){
-   std::cout<<"size = "<<data.size()<<"\n";
+std::cout<<"size = "<<data.size()<<"\n";
 Rcpp::DataFrame::iterator it;
 
  // Rcpp::CharacterVector df_names = data.names();
@@ -47,6 +49,8 @@ Rcpp::DataFrame::iterator it;
 
 if (data.containsElementNamed("years")){
    Rcpp::NumericVector years = data["years"];
+  double max =  Rcpp::max(years);
+   std::cout<<"max years = "<<max<<"\n";
    std::cout<<"years = "<<years.size()<<"\n";
    for(int i = 0; i < years.size(); i++){
       std::cout<<"years["<<i<<"] = "<<years[i]<<"\n";
