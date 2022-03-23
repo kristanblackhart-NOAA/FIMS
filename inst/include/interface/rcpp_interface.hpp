@@ -57,9 +57,12 @@ Rcpp::DataFrame::iterator it;
 
 if (data.containsElementNamed("type")){
    Rcpp::CharacterVector type = data["type"];
-   for(int i =0; i < type.size(); i++){
-      std::cout<<"type = "<<type[i]<<"\n";
-   }
+   std::cout<<"type = "<<type[0]<<"\n";
+}
+
+if (data.containsElementNamed("name")){
+   Rcpp::CharacterVector name = data["name"];
+   std::cout<<"name = "<<name[0]<<"\n";
 }
 
 if (data.containsElementNamed("years")){
