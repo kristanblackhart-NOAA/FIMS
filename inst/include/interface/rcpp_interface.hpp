@@ -55,10 +55,10 @@ Rcpp::DataFrame::iterator it;
  // Rcpp::CharacterVector df_names = data.names();
 //   Rcpp::Rcout << "col names: " << df_names << std::endl;
 
-if (data.containsElementNamed("name")){
-   Rcpp::CharacterVector name = data["name"];
-   for(int i =0; i < name.size(); i++){
-      std::cout<<"name = "<<name[i]<<"\n";
+if (data.containsElementNamed("type")){
+   Rcpp::CharacterVector name = data["type"];
+   for(int i =0; i < type.size(); i++){
+      std::cout<<"type = "<<type[i]<<"\n";
    }
 }
 
