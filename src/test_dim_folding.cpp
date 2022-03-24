@@ -1,10 +1,11 @@
 #include <TMB.hpp>
+#include <RcppEigen>
 #include <iostream>
 
 #define see(object) std::cout << #object ":\n" << object << "\n";
 
 template<class Type>
-Type dmultinom(vector<Type> obs, vector<Type> p, int do_log)
+Type dmultinom_(vector<Type> obs, vector<Type> p, int do_log)
 {
   //multinomial
   int dim = obs.size();
@@ -43,7 +44,7 @@ Type objective_function<Type>::operator() ()
         obs_y(i) = obs(k);
         k++;
     }
-    nll_age_composition(y) = -dmultinom(obs_y, pred, 1);
+    nll_age_composition(y) = -dmultinom_(obs_y, pred, 1);
   }
 
   REPORT(nll_age_composition);
