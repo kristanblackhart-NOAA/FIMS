@@ -29,7 +29,7 @@ Type objective_function<Type>::operator() ()
   PARAMETER_VECTOR(mu_age_comp); //length = n_ages -1. The predicted proportions would actually be generated from the pop mod.
   int n_obs = obs.size();
   vector<Type> nll_age_composition(n_years);
-  nll.setZero();
+  nll_age_composition.setZero();
 
   vector<Type> obs_y(n_ages);
   int k = 0;
