@@ -73,7 +73,7 @@ TMB::compile("src/test_dim_folding.cpp")
 dyn.load(dynlib("src/test_dim_folding"))
 
 # Check that it is loaded using
-base::getLoadedDLLs()
+names(base::getLoadedDLLs())
 
 dim_folding_mod <- TMB::MakeADFun(
   data = list(
@@ -86,3 +86,5 @@ dim_folding_mod <- TMB::MakeADFun(
   ),
   DLL = "test_dim_folding"
 )
+
+summary(dim_folding_mod)
