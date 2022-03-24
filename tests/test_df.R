@@ -1,19 +1,16 @@
-# #Maybe don't need this here if move to test that, in
- remotes::install_github("NOAA-FIMS/FIMS@feat-dimension-folding")
-library(TMB)
- library(Rcpp)
- library(FIMS)
 
-fims <- Rcpp::Module(module = "fims", PACKAGE = "FIMS")
+#fims <- Rcpp::Module(module = "fims", PACKAGE = "FIMS")
 
 input.data <- data.frame(
   # Trend is a type of data, where it can include CPUE, surveys, or environmental covariate
   type = "trend",
   # Name would be the "pretty" name printed on figures and in tables, where name refers to
   # the fleet or survey
-  name = "Index 1",
-  ages = c(1:25),
-  years = c(2001, 2002, 2003, 2004, 2005),
+  name = "Index_1",
+  ages = c(1:5),
+  years = c(rep(2001, length.out = 5), rep(2002, length.out =  5),
+            rep(2003, length.out = 5), rep(2004, length.out =  5),
+            rep(2005, length.out = 5)),
   value = c(623.3, 515.2, 611.0, 729.0, 843.25,
           623.3, 515.2, NA, 729.0, 843.25,
           623.3, 515.2, 611.0, 729.0, 843.25,
@@ -23,7 +20,12 @@ input.data <- data.frame(
   SE = 0.01
 )
 
-input.data$type = factor(input.data$type, levels = c("trend","catch","age_comp","length_comp"))
+input.data$type = factor(input.data$type, levels = c("catch","trend","age_comp","length_comp"))
+
+make.model.data <- function(data)
+{
+    
+}
 
 # fims$hello_fims()
  print(input.data)
