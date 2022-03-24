@@ -1,14 +1,19 @@
-# Description -----
-# Creates a dataframe containing data to pass to FIMS. We want to be able to pass
-# these in so they can contribute correctly to the likelihood.
-# Note we still want to convert this so it has testthat expectations.
+# Description ----- 
+# Creates a dataframe containing data to pass to FIMS. We want
+# to be able to pass these in so they can contribute correctly to the
+# likelihood. Note we still want to convert this so it has testthat
+# expectations.
 
 # Input data for trend ------
+# creating a data frame for both trend and catch so that we could pass in two
+# data types
+
 input_data_trend <- data.frame(
-  # Trend is a type of data, where it can include CPUE, surveys, or environmental covariate
+  # Trend is a type of data, where it can include CPUE, surveys, or
+  # environmental covariate
   type = "trend",
-  # Name would be the "pretty" name printed on figures and in tables, where name refers to
-  # the fleet or survey
+  # Name would be the "pretty" name printed on figures and in tables, where name
+  # refers to the fleet or survey
   name = "Index_1",
   ages = c(1:5),
   years = c(rep(2001, length.out = 5), rep(2002, length.out =  5),
@@ -23,12 +28,12 @@ input_data_trend <- data.frame(
   SE = 0.01
 )
 
-# catch
 input_data_catch <- data.frame(
-  # Trend is a type of data, where it can include CPUE, surveys, or environmental covariate
+  # Trend is a type of data, where it can include CPUE, surveys, or
+  # environmental covariate
   type = "catch",
-  # Name would be the "pretty" name printed on figures and in tables, where name refers to
-  # the fleet or survey
+  # Name would be the "pretty" name printed on figures and in tables, where name
+  # refers to the fleet or survey
   name = "Index_1",
   ages = c(1:5),
   years = c(rep(2001, length.out = 5), rep(2002, length.out =  5),
