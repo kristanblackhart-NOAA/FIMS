@@ -1,4 +1,4 @@
-# Description ----- 
+# Description -----
 # Creates a dataframe containing data to pass to FIMS. We want
 # to be able to pass these in so they can contribute correctly to the
 # likelihood. Note we still want to convert this so it has testthat
@@ -66,3 +66,23 @@ input_data <- rbind(input_data_trend, input_data_catch)
 # fims$addData(input.data)
 
 #fims <- Rcpp::Module(module = "fims", PACKAGE = "FIMS")
+
+# how to  run the TMB model in src/test_dim_folding.cpp
+library(TMB)
+TMB::compile("src/test_dim_folding.cpp")
+dyn.load(dynlib("src/test_dim_folding"))
+
+# Check that it is loaded using
+base::getLoadedDLLs()
+
+dim_folding_mod <- TMB::MakeADFun(
+  data = list(
+    obs = input_data$value,
+    years = unique(input_data$years),
+    n_ages = length(unique(input_data$ages))
+  ),
+  parameters = list(
+    mu_age_comp = rep(0, max(input_data$ages) - 1)
+  ),
+  DLL = "test_dim_folding"
+)
