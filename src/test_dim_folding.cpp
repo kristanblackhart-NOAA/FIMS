@@ -24,7 +24,7 @@ Type objective_function<Type>::operator() ()
 {
   DATA_VECTOR(obs); //data
   DATA_IVECTOR(years);
-  n_years = years.size();
+  int n_years = years.size();
   DATA_INTEGER(n_ages);
   PARAMETER_VECTOR(mu_age_comp); //length = n_ages -1. The predicted proportions would actually be generated from the pop mod.
   int n_obs = obs.size();
