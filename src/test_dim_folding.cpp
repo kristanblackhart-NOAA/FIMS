@@ -38,7 +38,7 @@ Type objective_function<Type>::operator() ()
       pred(i) = 1/(1 + exp(-mu_age_comp(i)));
   }
   pred(n_ages-1) = 1.0 - sum(pred.head(n_ages-1));
-  for(int y = 0; y < n_years){
+  for(int y = 0; y < n_years; y++){
     for(int i = 0; i < n_ages; i++){
         obs_y(i) = obs(k);
         k++;
