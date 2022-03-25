@@ -36,26 +36,62 @@
 #include <vector>
 #include "model_object.hpp"
 #include "../interface/interface.hpp"
+#include "../population_dynamics/recruitment/recruitment.hpp"
+#include "../population_dynamics/selectivity/selectivity.hpp"
+#include "../population_dynamics/population/population.hpp"
+#include "../population_dynamics/growth/growth.hpp"
+#include "../population_dynamics/fleet/fleet.hpp"
+#include "data_object.hpp"
 
 
 namespace fims {
 
-/**
- * Contains all objects and data pre-model construction
- */
-template<typename T>
-class Information {
-    typedef fims::FIMSTrait<T>::variable_t variable_t;
-    typedef fims::FIMSTrait<T>::real_t real_t;
-    std::vector<variable_t*> parameters; //list of all estimated parameters
-    std::vector<variable_t*> random_effects_parameters; //list of all random effects parameters
-    std::vector<variable_t*> fixed_effects_parameters; //list of all fixed effects parameters
 
-    bool CreateModel(){
+    //temporary
+    template<class Type>
+    struct RecruitmentBase;
 
-    }
+    template<typename T>
+    struct SelectivityBase;
 
-};
+    template<typename T>
+    struct GrowthBase;
+
+    template<typename T>
+    struct Population;
+
+    /**
+     * Contains all objects and data pre-model construction
+     */
+    template<typename Type>
+    class Information {
+        typedef fims::FIMSTrait<T>::variable_t variable_t;
+        typedef fims::FIMSTrait<T>::real_t real_t;
+        std::vector<variable_t*> parameters; //list of all estimated parameters
+        std::vector<variable_t*> random_effects_parameters; //list of all random effects parameters
+        std::vector<variable_t*> fixed_effects_parameters; //list of all fixed effects parameters
+
+        //data objects
+        std::map<uint32_t, std::shared_ptr<fims::DataObject<double> > data_objects;
+        //sub-models
+        std::map<uint32_t, std::shared_ptr<fims::RecruitmentBase<Type> > recruitment_models;
+        std::map<uint32_t, std::shared_ptr<fims::SelectivityBaseType> > selectivity_models;
+        std::map<uint32_t, std::shared_ptr<fims::GrowthBase<Type> > growth_models;
+        std::map<uint32_t, std::shared_ptr<fims::Population<Type> > populations;
+        
+        uint32_t nsexes;
+        
+        
+
+        bool CreateModel() {
+
+        }
+        
+        std::string ToJSON(){
+            
+        }
+
+    };
 }
 
 
