@@ -33,6 +33,7 @@
 #define FIMS_COMMON_DATA_OBJECT_HPP
 
 #include <vector>
+#include <exception>
 #include "model_object.hpp"
 
 
@@ -42,7 +43,8 @@ namespace fims {
      * Container to hold user supplied data.
      */
     template<typename Type>
-    struct DataObject : public fims::model_object {
+    struct DataObject : public fims::ModelObject<Type> {
+        static uint32_t id_g;
         std::vector<Type> data;
         size_t dimensions;
         size_t imax;
@@ -53,21 +55,25 @@ namespace fims {
         DataObject(size_t imax) :
         imax(imax), dimensions(1) {
             data.resize(imax);
+            this->id = DataObject<Type>::id_g++;
         }
 
         DataObject(size_t imax, size_t jmax) :
         imax(imax), jmax(jmax), dimensions(2) {
             data.resize(imax * jmax);
+            this->id = DataObject<Type>::id_g++;
         }
 
         DataObject(size_t imax, size_t jmax, size_t kmax) :
         imax(imax), jmax(jmax), kmax(kmax), dimensions(3) {
             data.resize(imax * jmax * kmax);
+            this->id = DataObject<Type>::id_g++;
         }
 
         DataObject(size_t imax, size_t jmax, size_t kmax, size_t lmax) :
         imax(imax), jmax(jmax), kmax(kmax), lmax(lmax), dimensions(4) {
             data.resize(imax * jmax * kmax * lmax);
+            this->id = DataObject<Type>::id_g++;
         }
 
         /**
@@ -86,8 +92,8 @@ namespace fims {
          * @return reference type
          */
         inline Type& at(size_t i) {
-            if (i < this->data.size()) {
-                throw std::exception("DataObject error: index out of bounds");
+            if (i >= this->data.size()) {
+                throw std::overflow_error("DataObject error:i index out of bounds");
             }
             return data[i];
         }
@@ -110,8 +116,8 @@ namespace fims {
          * @return reference type
          */
         inline Type& at(size_t i, size_t j) {
-            if ((i * jmax + j) < this->data.size()) {
-                throw std::exception("DataObject error: index out of bounds");
+            if ((i * jmax + j) >= this->data.size()) {
+                throw std::overflow_error("DataObject error: index out of bounds");
             }
             return data[i * jmax + j];
         }
@@ -136,8 +142,8 @@ namespace fims {
          * @return reference type
          */
         inline Type& at(size_t i, size_t j, size_t k) {
-            if ((i * jmax * kmax + j * kmax + k) < this->data.size()) {
-                throw std::exception("DataObject error: index out of bounds");
+            if ((i * jmax * kmax + j * kmax + k) >= this->data.size()) {
+                throw std::overflow_error("DataObject error: index out of bounds");
             }
             return data[i * jmax * kmax + j * kmax + k];
         }
@@ -164,8 +170,8 @@ namespace fims {
          * @return reference type
          */
         inline Type& at(size_t i, size_t j, size_t k, size_t l) {
-            if ((i * jmax * kmax * lmax + j * kmax * lmax + k * lmax + l) < this->data.size()) {
-                throw std::exception("DataObject error: index out of bounds");
+            if ((i * jmax * kmax * lmax + j * kmax * lmax + k * lmax + l) >= this->data.size()) {
+                throw std::overflow_error("DataObject error: index out of bounds");
             }
             return data[i * jmax * kmax * lmax + j * kmax * lmax + k * lmax + l];
         }
@@ -192,6 +198,10 @@ namespace fims {
 
 
     };
+
+    template<typename Type>
+    uint32_t DataObject<Type>::id_g = 0;
+
 }
 
 #endif

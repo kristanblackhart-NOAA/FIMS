@@ -65,6 +65,7 @@ namespace fims {
      */
     template<typename Type>
     class Information {
+
         typedef fims::FIMSTrait<T>::variable_t variable_t;
         typedef fims::FIMSTrait<T>::real_t real_t;
         std::vector<variable_t*> parameters; //list of all estimated parameters
@@ -78,21 +79,21 @@ namespace fims {
         std::map<uint32_t, std::shared_ptr<fims::SelectivityBaseType> > selectivity_models;
         std::map<uint32_t, std::shared_ptr<fims::GrowthBase<Type> > growth_models;
         std::map<uint32_t, std::shared_ptr<fims::Population<Type> > populations;
-        
+
         uint32_t nsexes;
-        
-        
 
         bool CreateModel() {
 
         }
-        
-        std::string ToJSON(){
-            
+
+        std::string ToJSON() {
+
         }
 
     };
+
 }
+
 
 
 
