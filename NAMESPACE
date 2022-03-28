@@ -2,4 +2,4 @@
 
 export(mkObj)
 importFrom(TMB,MakeADFun)
-useDynLib(FIMS)
+#useDynLib(FIMS)
